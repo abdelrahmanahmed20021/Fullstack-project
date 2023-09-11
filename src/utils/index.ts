@@ -1,6 +1,10 @@
-import axios from "axios";
+import axios from 'axios';
 
-export const createPost = async (title: string, content: string) => {
+export const createPost = async (
+  title: string,
+  content: string,
+  userId = "64f73c1fe89ea81197179326"
+) => {
   type data = {
     title: string;
     content: string;
@@ -9,7 +13,7 @@ export const createPost = async (title: string, content: string) => {
   const data: data = {
     title,
     content,
-    userId: "64f73c1fe89ea81197179326",
+    userId,
   };
 
   const req = await axios.post("http://localhost:3000/api/createPost", {

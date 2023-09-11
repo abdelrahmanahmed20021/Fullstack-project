@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 
-import { createPost } from "@/utils";
+import { createPost } from '@/utils';
 import {
   Button,
   Input,
@@ -13,9 +13,9 @@ import {
   ModalHeader,
   Textarea,
   useDisclosure,
-} from "@nextui-org/react";
+} from '@nextui-org/react';
 
-export default function CreatePost() {
+export default function CreatePost({ setUser }: { setUser: any }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [content, setContent] = useState<any>("");
   const [titleValue, setTitleValue] = useState<any>("");
@@ -55,7 +55,7 @@ export default function CreatePost() {
       setTitleValue("");
       setContent("");
       setLoading(false);
-      console.log(data);
+      setUser((prev: any) => ({ ...prev, posts: [...prev.posts, data] }));
     });
   };
 
